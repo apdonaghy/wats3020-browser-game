@@ -146,7 +146,7 @@ class TicTacToe {
     setUpBoard() {
         this.gameboard.innerHTML = '';
 
-        for (let i; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
 
             let newRow = document.createElement('div');
 
