@@ -1,11 +1,5 @@
-/* WATS 3020 Browser Game project */
-/* Build a tic tac toe game for two players. */
-
-// TODO: declare a global variable named 'game` - it will reference the instance of the current game
 let game;
-// TODO: Create a class called `Player`. The `constructr()` should look for a
-// parameter called `token` and should set `this.token` as a property of
-// the class.
+
 
 class Player {
     constructor(token) {
@@ -13,46 +7,21 @@ class Player {
     }
 }
 
-// Tic Tac Toe Game Class
 class TicTacToe {
     constructor() {
 
         this.player1 = new Player('times');
-        this.player2 = new Player('circle')
-
+        this.player2 = new Player('circle');
         this.currentPlayer = null;
-
         this.gameStatus = null;
-
-
-
         this.winner = null;
-
-
-
         this.moveCount = 0;
-
-
-
-
-
         this.startPrompt = document.querySelector(`#start-prompt`);
-
-
         this.movePrompt = document.querySelector(`#move-prompt`);
-
-
         this.currentPlayerToken = document.querySelector(`#player-token`);
-
-
         this.gameboard = document.querySelector(`#gameboard`);
-
-
         this.winScreen = document.querySelector(`#win-screen`);
-
-
         this.winnerToken = document.querySelector(`#winner-token`);
-
         this.drawScreen = document.querySelector(`#draw-screen`);
         this.gameState = [
             [null, null, null],
@@ -183,10 +152,11 @@ class TicTacToe {
 
             newRow.setAttribute('class', 'row');
 
-            for (j = 0; j < 3; j++) {
+            for (let j = 0; j < 3; j++) {
                 let newCol = document.createElement('div');
                 newCol.setAttribute('class', 'col-xs-3');
                 let newTile = document.createElement('span');
+                newTile.setAttribute('class', 'fas fa-question tile')
                 newTile.setAttribute('data-x', i);
                 newTile.setAttribute('data-y', j);
                 newCol.appendChild(newTile);
@@ -201,7 +171,6 @@ class TicTacToe {
         this.startPrompt.setAttribute('class', 'hidden');
         this.movePrompt.setAttribute('class', '')
         this.currentPlayer = this.player1;
-
         this.currentPlayerToken.setAttribute('class', `fas fa-${this.currentPlayer.token}`);
 
     }
@@ -214,7 +183,7 @@ class TicTacToe {
         console.log('init move prompt')
 
     }
-} 
+}
 
 
 
@@ -244,7 +213,7 @@ document.addEventListener('draw', (event) => {
 
 
 function handleMove(event) {
-   
+
     game.recordMove(event);
 
     game.checkForWinner();
